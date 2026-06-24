@@ -25,6 +25,10 @@
                 width: 80px;
                 height: 80px;
             }
+            .artigo-autor {
+                font-weight: bold;
+            }
+
         </style>
     </head>
     <body>
@@ -34,10 +38,21 @@
         </header>
         <main>
             <img src="imagem-blog.png" alt="Logotipo em estilo pixel art redondo com fundo azul escuro e borda laranja. No centro, uma bola de vôlei branca e laranja voa sobre uma rede de vôlei azul. Na parte inferior, destaca-se o texto 'VÔLEI' e, logo abaixo, em letras menores, 'BLOG DE VÔLEI'.">
-            
+        <div>
             <h2>Meu primeiro blog</h2>
-            <p> Por: Dhenzel Brayam </p>
-            <p>Boas-vindas ao meu primeiro blog</p>
-        </main>
-    </body>
+            <p class="artigo-autor">Por: Dhenzel Brayam </p>
+            <p>Boas-vindas ao meu bolog! Aqui vou compartilhar dicas e conhecimentos sobre o volei</p>
+            <button>❤️ <samp>0</samp></button>
+        </div>
+
+    </main>
+</body>
+<script>
+    const botao = document.querySelector("button");
+    botao.addEventListener("click", botaovClicado);
+
+    function botaovClicado(){
+        console.log("fui clicado");
+    }
+</script>
 </html>
