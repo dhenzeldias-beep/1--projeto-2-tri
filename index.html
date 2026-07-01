@@ -5,28 +5,63 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Blog</title>
         <style>
+            body {
+                background-color: #f0f4f8;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 20px;
+            }
             header {
                 background-color: #183C63;
                 color: aliceblue;
                 text-align: center;
                 max-width: 800px;
-                margin: 0 auto;
+                margin: 0 auto 20px auto;
                 padding: 16px;
                 border: 5px solid #447d9e;
+                border-radius: 8px;
             }
             main {
-                background-color: #FFFF;
+                background-color: #FFFFFF;
                 color: #183C63;
                 max-width: 800px;
                 margin: 0 auto;
                 padding: 16px;
+                border-radius: 8px;
+            }
+            
+            article {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                border-bottom: 1px solid #e2e8f0;
+                padding: 16px 0;
+            }
+            article:last-child {
+                border-bottom: none;
             }
             img {
                 width: 80px;
                 height: 80px;
+                border-radius: 50%;
             }
             .artigo-autor {
                 font-weight: bold;
+                margin: 4px 0;
+            }
+            h2, p {
+                margin: 0 0 8px 0;
+            }
+            button {
+                background: #f0f4f8;
+                border: 1px solid #cbd5e1;
+                padding: 6px 12px;
+                border-radius: 20px;
+                cursor: pointer;
+                margin-right: 8px;
+            }
+            button:hover {
+                background: #e2e8f0;
             }
         </style>
     </head>
@@ -35,54 +70,52 @@
             <h1>Blog</h1>
             <p>Vou compartilhar conhecimentos sobre vôlei</p>  
         </header>
-                <main>
-                <article>
-                <img src="imagem-blog.png" 
-                alt="Logotipo em estilo pixel art redondo com fundo azul escuro e borda laranja. No centro, uma bola de volei branca e laranja voa sobre uma rede de vôlei azul. Na parte inferior, destaca-se o texto 'VÔLEI' e, logo abaixo, em letras menores, 'BLOG DE VÔLEI'.">
-
-                <div>
-                <h2>Meu primeiro blog</h2>
-                <p class="artigo-autor">Por: Dhenzel Brayam </p>
-                <p>Boas-vindas ao meu blog! Aqui vou compartilhar dicas e conhecimentos sobre o vôlei</p>
-                <button>❤️<span>0</span></button>
-                <button>👍<span>0</span></button>
-                </div>
-                </article>
-
-                <article>
-                <img src="imagem-blog.png" 
-                alt="Logotipo em estilo pixel art redondo com fundo azul escuro e borda laranja. No centro, uma bola de volei branca e laranja voa sobre uma rede de vôlei azul. Na parte inferior, destaca-se o texto 'VÔLEI' e, logo abaixo, em letras menores, 'BLOG DE VÔLEI'.">
-
-                <div>
-                <h2>Meu primeiro blog</h2>
-                <p class="artigo-autor">Por: Dhenzel Brayam </p>
-                <p>Boas-vindas ao meu blog! Aqui vou compartilhar dicas e conhecimentos sobre o vôlei</p>
-                <button>❤️<span>0</span></button>
-                <button>👍<span>0</span></button>
-                </div>
-                </article>
-                </main>
-    </body>
-    <script>
-        const botoes = document.querySelectorAll("button");
         
-        botoes.forEach(function(botao) {
-        let curtiu = false;    
+        <main>
+            <article>
+                <img src="imagem-blog.png" 
+                     alt="Logotipo em estilo pixel art redondo com fundo azul escuro e borda laranja. No centro, uma bola de volei branca e laranja voa sobre uma rede de vôlei azul. Na parte inferior, destaca-se o texto 'VÔLEI' e, logo abaixo, em letras menores, 'BLOG DE VÔLEI'.">
+                <div>
+                    <h2>Meu primeiro blog</h2>
+                    <p class="artigo-autor">Por: Dhenzel Brayam </p>
+                    <p>Boas-vindas ao meu blog! Aqui vou compartilhar dicas e conhecimentos sobre o vôlei</p>
+                    <button data-curtiu="false">❤️ <span>0</span></button>
+                    <button data-curtiu="false">👍 <span>0</span></button>
+                </div>
+            </article>
 
-            botao.addEventListener("click", botaoClicado);
+            <article>
+                <img src="imagem-blog.png" 
+                     alt="Logotipo em estilo pixel art redondo com fundo azul escuro e borda laranja. No centro, uma bola de volei branca e laranja voa sobre uma rede de vôlei azul. Na parte inferior, destaca-se o texto 'VÔLEI' e, logo abaixo, em letras menores, 'BLOG DE VÔLEI'.">
+                <div>
+                    <h2>Regras Básicas do Vôlei</h2>
+                    <p class="artigo-autor">Por: Dhenzel Brayam </p>
+                    <p>No próximo post, vamos falar sobre o sistema de rotação e as posições em quadra!</p>
+                    <button data-curtiu="false">❤️ <span>0</span></button>
+                    <button data-curtiu="false">👍 <span>0</span></button>
+                </div>
+            </article>
+        </main>
+
+        <script>
+            const botoes = document.querySelectorAll("button");
             
-            function botaoClicado() {
-                console.log("fui clicado");
-                let texto = botao.querySelector("span");
+            botoes.forEach(function(botao) {
+                botao.addEventListener("click", function() {
+                    let texto = botao.querySelector("span");
+                    
+                    
+                    let curtiu = botao.dataset.curtiu === "true";
 
-                if (curtiu === false) {
-                texto.textContent++;
-                curtiu = true;
-                } else {
-                texto.textContent--;
-                curtiu = false;
-            }
-            }
-        });
-    </script>
+                    if (!curtiu) {
+                        texto.textContent = parseInt(texto.textContent) + 1;
+                        botao.dataset.curtiu = "true"; 
+                    } else {
+                        texto.textContent = parseInt(texto.textContent) - 1;
+                        botao.dataset.curtiu = "false"; 
+                    }
+                });
+            });
+        </script>
+    </body>
 </html>
