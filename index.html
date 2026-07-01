@@ -37,26 +37,29 @@
             <p>Vou compartilhar conhecimentos sobre vôlei</p>  
         </header>
         <main>
-            <img src="imagem-blog.png" alt="Logotipo em estilo pixel art redondo com fundo azul escuro e borda laranja. No centro, uma bola de vôlei branca e laranja voa sobre uma rede de vôlei azul. Na parte inferior, destaca-se o texto 'VÔLEI' e, logo abaixo, em letras menores, 'BLOG DE VÔLEI'.">
+            <img src="imagem-blog.png" alt="Logotipo em estilo pixel art redondo com fundo azul escuro e borda laranja. No centro, uma bola de volei branca e laranja voa sobre uma rede de vôlei azul. Na parte inferior, destaca-se o texto 'VÔLEI' e, logo abaixo, em letras menores, 'BLOG DE VÔLEI'.">
         <div>
             <h2>Meu primeiro blog</h2>
             <p class="artigo-autor">Por: Dhenzel Brayam </p>
             <p>Boas-vindas ao meu bolog! Aqui vou compartilhar dicas e conhecimentos sobre o volei</p>
-            <button>❤️ <samp>0</samp></button>
-            <button>👍 <samp>0</samp></button>
-            
+            <button>❤️<samp>0</samp></button>
+            <button>👍<samp>0</samp></button>
         </div>
 
     </main>
 </body>
 <script>
-    const botao = document.querySelectorAll("button");
-    botao.addEventListener("click", botaovClicado);
+    const botoes = document.querySelectorAll("button")
+    
+    botoes.forEach(function(botao) {
+        botao.addEventListener("click", botaoClicado);
+        function botaoClicado() {
+            console.log("fui clicado");
+            let texto = botao.querySelector("span");
+            texto.textContent++;
+        }
+    });
 
-    function botaovClicado(){
-        console.log("fui clicado");
-        let texto = botao.querySelector("span")
-        texto.textContent++;
-    }
+    
 </script>
 </html>
